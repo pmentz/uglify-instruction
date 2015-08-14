@@ -1,0 +1,38 @@
+{
+  "name": "uglify-instruction",
+  "version": "0.0.1",
+  "description": "Instruction for comment-processing, that uses uglify to squash javascript files",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmentz/uglify-instruction.git"
+  },
+  "keywords": [
+    "html",
+    "comment",
+    "processing",
+    "uglify",
+    "instruction",
+    "build"
+  ],
+  "files": [
+    "README.md",
+    "LICENSE",
+    "index.js"
+  ],
+  "author": "Patrick Mentz",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.3",
+    "istanbul": "^0.3.17",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.2.5",
+    "mocha-lcov-reporter": "0.0.2"
+  }
+}
