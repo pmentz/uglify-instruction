@@ -1,0 +1,1 @@
+"use strict";angular.module("test",[]),angular.module("test").controller("TestCtrl",function(){this.foo="bar",this.greet=function(name){return"Hello "+name}});

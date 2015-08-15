@@ -46,7 +46,23 @@ describe('uglify-instruction', function() {
       expect(fs.readFileSync(path.join(this.outputDir, 'script', 'application.js'), 'utf-8')).to.equal(
              fs.readFileSync(path.join(this.expectedDir, 'uglified.js'), 'utf-8'));
       done();
-    }.bind(this));
+    }.bind(this)).catch(function(error) {
+      done(error);
+    });
+  });
+
+  it('hands over config to uglify', function(done) {
+    var processing = commentProcessing();
+    processing.addInstruction('uglify', UglifyInstruction.factory(this.sampleDir, this.outputDir, {mangle: false}));
+    processing.transformFile(path.join(this.sampleDir, 'example_withOptions.html'),
+                             path.join(this.outputDir, 'example_withOptions.html')).then(function() {
+      expect(fs.readFileSync(path.join(this.outputDir, 'script', 'application_withOptions.js'), 'utf-8')).to.equal(
+             fs.readFileSync(path.join(this.expectedDir, 'uglified_withOptions.js'), 'utf-8'));
+      done();
+    }.bind(this)).catch(function(error) {
+      done(error);
+    });
+
   });
 
   it('has a factory method that returns an AggregateInstruction', function() {
