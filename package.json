@@ -30,9 +30,15 @@
   "devDependencies": {
     "chai": "^3.2.0",
     "coveralls": "^2.11.3",
+    "es6-promise": "^3.0.2",
     "istanbul": "^0.3.17",
-    "mkdirp": "^0.5.1",
     "mocha": "^2.2.5",
-    "mocha-lcov-reporter": "0.0.2"
+    "mocha-lcov-reporter": "0.0.2",
+    "rimraf": "^2.4.2"
+  },
+  "dependencies": {
+    "comment-processing": "^0.1.2",
+    "mkdirp-promise": "^1.0.2",
+    "uglify-js": "^2.4.24"
   }
 }
