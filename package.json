@@ -1,6 +1,6 @@
 {
   "name": "uglify-instruction",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Instruction for comment-processing, that uses uglify to squash javascript files",
   "main": "index.js",
   "scripts": {
