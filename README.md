@@ -16,8 +16,8 @@ Instruction for [comment-processing][], that uses [uglify-js][] to squash javasc
 
 This is an instruction for [comment-processing][], refer to its documentation to find out more.
 
-The UglifyInstruction is a special implementation of the AggregateInstruction, that allows to use [ugify-js][] for a set
-of resources to concat and compress them.  
+The UglifyInstruction is a special implementation of the AggregateInstruction, that allows to use [uglify-js][] for a
+set of resources to concat and compress them.  
 It is provided as a separate module, to separate its external dependencies just for those who really need it.
 
 The guide of the comment-processing already included a simple example of a callback for the AggregateInstruction. This
