@@ -2,13 +2,14 @@
 [![NPM][nodei-img]][nodei-url]
 
 # uglify-instruction
-Instruction for [comment-processing][], that uses [uglify-js][] to squash javascript files.
+Instruction for [comment-processing][], that uses [uglify-js][] to squash javascript- and [uglifycss][] to squash
+css files.
 
 ## Installation
 
 * You need to have [npm][npm] installed.  
-* Use 
-    * `npm install uglify-instruction` to retrieve the module or 
+* Use
+    * `npm install uglify-instruction` to retrieve the module or
     * `npm install uglify-instruction -S` to save the dependency to your package.json.
 * *If you are using Node <= v0.10.0 you will need a [Promise polyfill][es6-promise]*
 
@@ -16,12 +17,13 @@ Instruction for [comment-processing][], that uses [uglify-js][] to squash javasc
 
 This is an instruction for [comment-processing][], refer to its documentation to find out more.
 
-The UglifyInstruction is a special implementation of the AggregateInstruction, that allows to use [uglify-js][] for a
-set of resources to concat and compress them.  
+The UglifyInstruction is a special implementation of the AggregateInstruction, that allows to use [uglify-js][] or
+[uglifycss][] for a set of resources to concat and compress them.  
 It is provided as a separate module, to separate its external dependencies just for those who really need it.
 
 The guide of the comment-processing already included a simple example of a callback for the AggregateInstruction. This
-is a more generic implementation and only needs configuration.
+is a more generic implementation and only needs configuration.  
+In addition it also allows to compress css files, just the same way.
 
 So I have written my application, which is based on several javascript files what is typical g.e. for Angular apps.
 
@@ -34,7 +36,7 @@ So I have written my application, which is based on several javascript files wha
     <meta name="description" content="UglifyInstruction sample">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  
+
   <body>
     <!-- uglify:start script/application.js -->
     <script src="script/module.js"></script>
@@ -44,7 +46,7 @@ So I have written my application, which is based on several javascript files wha
 </html>
 ```
 
-As you can see, I surrounded my sources with a start end end comment, referencing the uglify instruction, as well as 
+As you can see, I surrounded my sources with a start end end comment, referencing the uglify instruction, as well as
 the name of the file to create.
 
 ```javascript
@@ -54,7 +56,7 @@ commentProcessing.addInstruction('uglify', UglifyInstruction.factory('src', 'dis
 commentProcessing.transformFile('src/index.html', 'dist/public/index.html');
 ```
 
-So this is basically just adding the UglifyInstruction to the registry of the comment-processing. Like the 
+So this is basically just adding the UglifyInstruction to the registry of the comment-processing. Like the
 AggregateInstruction, it provides a factory method, which will return a function, that will return a configured instance
 of the UglifyInstruction when called. Remember, that you have to hand over factory methods to the registry and not
 already created instances.
@@ -63,6 +65,8 @@ Two mandatory parameters are the paths used to locate the source files for the t
 file into.
 Additionally, you can add a third parameter which is the configuration for [uglify-js][], it will be handed over to
 uglify as it is, so take a look at its configuration.
+
+When it comes to css, just read this whole stuff again and replace *js* with *css* in most cases.
 
 ## API
 
@@ -78,6 +82,7 @@ MIT
 [npm]:http://npmjs.org/
 [comment-processing]: https://www.npmjs.com/package/comment-processing
 [uglify-js]: https://www.npmjs.com/package/uglify-js
+[uglifycss]: https://www.npmjs.com/package/uglifycss
 [es6-promise]: https://www.npmjs.com/package/es6-promise
 
 [buildstatus-img]: https://travis-ci.org/pmentz/uglify-instruction.svg?branch=master

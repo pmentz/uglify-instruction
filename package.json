@@ -37,8 +37,9 @@
     "rimraf": "^2.4.2"
   },
   "dependencies": {
-    "comment-processing": "^0.1.2",
+    "comment-processing": "^0.2.0",
     "mkdirp-promise": "^1.0.2",
-    "uglify-js": "^2.4.24"
+    "uglify-js": "^2.4.24",
+    "uglifycss": "0.0.18"
   }
 }

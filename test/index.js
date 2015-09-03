@@ -38,13 +38,26 @@ describe('uglify-instruction', function() {
     expect(UglifyInstruction()).to.be.an.instanceof(UglifyInstruction);
   });
 
-  it('uglifies the files aggregated', function(done) {
+  it('uglifies the javascript files aggregated', function(done) {
     var processing = commentProcessing();
     processing.addInstruction('uglify', UglifyInstruction.factory(this.sampleDir, this.outputDir));
     processing.transformFile(path.join(this.sampleDir, 'example.html'),
                              path.join(this.outputDir, 'example.html')).then(function() {
       expect(fs.readFileSync(path.join(this.outputDir, 'script', 'application.js'), 'utf-8')).to.equal(
              fs.readFileSync(path.join(this.expectedDir, 'uglified.js'), 'utf-8'));
+      done();
+    }.bind(this)).catch(function(error) {
+      done(error);
+    });
+  });
+
+  it('uglifies the css files aggregated', function(done) {
+    var processing = commentProcessing();
+    processing.addInstruction('uglify', UglifyInstruction.factory(this.sampleDir, this.outputDir));
+    processing.transformFile(path.join(this.sampleDir, 'example_css.html'),
+                             path.join(this.outputDir, 'example_css.html')).then(function() {
+      expect(fs.readFileSync(path.join(this.outputDir, 'style', 'application.css'), 'utf-8')).to.equal(
+             fs.readFileSync(path.join(this.expectedDir, 'uglified.css'), 'utf-8'));
       done();
     }.bind(this)).catch(function(error) {
       done(error);
